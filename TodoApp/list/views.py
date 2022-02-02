@@ -2,9 +2,12 @@ from django.shortcuts import render
 from django.http import HttpResponse
 # Create your views here.
 def index(request):
-    return HttpResponse("This is index page")
+    return render(request, "includes/index.html")
 
 def about(request):
-    return HttpResponse("This is about page")
+    return render(request, "includes/about.html")
+
+def lists(request):
+    return render(request, "includes/lists.html")
 
 

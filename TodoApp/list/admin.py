@@ -6,7 +6,12 @@ from .models import List
 class ListAdmin(admin.ModelAdmin):
 
     list_display = ["author","title","created_date","dateline"]
+    
     list_display_links =["title","created_date"]
+    
     search_fields = ["title"]
+
+    list_filter = ["dateline"]
+
     class Meta:
         model = List
