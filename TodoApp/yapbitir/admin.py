@@ -1,8 +1,8 @@
 from django.contrib import admin
 
-from .models import List
+from .models import Yapbitir
 # Register your models here.
-@admin.register(List)
+@admin.register(Yapbitir)
 class ListAdmin(admin.ModelAdmin):
 
     list_display = ["author","title","created_date","dateline"]
@@ -14,4 +14,4 @@ class ListAdmin(admin.ModelAdmin):
     list_filter = ["dateline"]
 
     class Meta:
-        model = List
+        model = Yapbitir
