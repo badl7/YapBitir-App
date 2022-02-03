@@ -37,10 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "yapbitir",
-    'crispy_forms',
     "ckeditor",
     'django_cleanup.apps.CleanupConfig',
+    'crispy_forms',
+    "yapbitir",
+    "user"
 ]
 
 MIDDLEWARE = [

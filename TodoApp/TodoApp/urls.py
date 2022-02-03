@@ -23,6 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name="index"),
     path('about/', views.about,name = "about"),
-    path('yapbitirs/', views.yapbitirs,name = "yapbitirs"),
-    #path('user/', include("user.urls")),
+    path('yapbitirs/', include("yapbitir.urls")),
+    path('user/', include("user.urls")),
 ]
