@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+{% load static %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,23 +10,12 @@
     <title>YapBitir APP</title>
 </head>
 <body>
-    <div class = "container">
+    <div style = "margin-top :100px;" class = "container">
+
         {% block body %}
         
         {% endblock body %}
-
-
     </div>
-
-
-
-
-
-
-
-
-
-
 
     <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
