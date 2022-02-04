@@ -73,7 +73,7 @@ def loginUser(request):  # sourcery skip: extract-method
 
 def logoutUser(request):
     logout(request)
-    messages.success(request,"Başarıyla Çıkış Yaptınız...")
+    messages.success(request,"Başarıyla Çıkış Yaptınız!")
     return redirect("index")
 
 # Create your views here.

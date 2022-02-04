@@ -1,62 +1,54 @@
-<!--
 {% extends 'layout.html' %}
 
 {% block body %}
-<h3>Kontrol Paneli</h3>
-<hr>
-<p>
-    Hoş geldiniz <small>{{request.user.username}}</small>, listenizi ekleyebilirsiniz...
-</p>
-
-<hr>
+<h1><strong>{{request.user.username}}</strong>, liste ekleyebilirsiniz</h1>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4"><center>Yap-Bitir Listeler</center></h1>
+    <p class="lead"><center>{{ yapbitir.content}}</center></p>
+    <div class="text-center">
+      <a class="btn btn-outline-dark" href="{% url 'yapbitir:addyapbitir' %}" role="button">YapBitir Ekle</a>
+    </div>
+  </div>
+</div>
 <div class="container">
-  <div class="row">
-    <a class ="btn btn-danger" href = "{% url 'article:addarticle' %}">Makale Ekle</a>
-    <hr>
-{% if articles %}
-
-
-<table class="table table-hover">
+<table class="table">
   <thead>
     <tr>
-      <th scope="col">MAKALE id</th>
-      <th scope="col">Başlık</th>
-      <th scope="col">Yazar</th>
-      <th scope="col">Tarih</th>
-      <th scope="col">Güncelle</th>
+      <th scope="col">Liste Adı</th>
+      <th scope="col">Bitti mi??</th>
+      <th scope="col">Tarih ve Saat</th>
+      <th scope="col">Dateline</th>
       <th scope="col">Sil</th>
+      <th scope="col">Güncelle</th>
     </tr>
   </thead>
   <tbody>
+      {% for yapbitir in yapbitirs %} 
+        {% if yapbitir.finished %}
+          <tr>
+              <td><del>{{ yapbitir.title }}</del></td>
+              <td><a class="btn btn-danger" href="{% url 'yapbitir:yes_finish' yapbitir.id %}" role="button">Evet</a></td>
+              <td>{{ yapbitir.created_date }}</td>
+              <td>{{ yapbitir.dateline }}</td>
+              <td><a class="btn btn-danger" href="{% url 'yapbitir:delete' yapbitir.id %}" role="button">Sil</a></td>
+              <td><a class="btn btn-warning" href="{% url 'yapbitir:update' yapbitir.id %}" role="button">Güncelle</a></td>
+          </tr>
+        {% else %}
+          <tr>
+              <td>{{ yapbitir.title }}</td>
+              <td><a class="btn btn-warning" href="{% url 'yapbitir:no_finish' yapbitir.id %}" role="button">Hayır</a></td>
+              <td>{{ yapbitir.created_date }}</td>
+              <td>{{ yapbitir.dateline }}</td>
+              <td><a class="btn btn-danger" href="{% url 'yapbitir:delete' yapbitir.id %}" role="button">Sil</a></td>
+              <td><a class="btn btn-warning" href="{% url 'yapbitir:update' yapbitir.id %}" role="button">Güncelle</a></td>
+          </tr>
+        {% endif %}
+      {% endfor %}
+  </tbody>
+</table>
 
-    {% for article in articles %}
-    <tr>
-      <th scope="row">{{article.id}}</th>
-      <td><a href="{% url 'article:detail' article.id %}">{{article.title}}</a></td>
-      <td>{{article.author.username}}</td>
-      <td>{{article.created_date}}</td>
-      <td><a href="{% url 'article:update' article.id %}" class= "btn btn-success">Güncelle</a></td>
-      <td><a href="{% url 'article:delete' article.id %}" class= "btn btn-danger">Sil</a></td>
-
-    </tr>
-    {% endfor %}
-   
-    </tbody>
-   </table>  
-
-{% else %}
-
-<div class= "alert alert-danger">
-Henüz makaleniz bulunmamaktadır!
 </div>
-{% endif %}
 
-
-
-
-
-  </div>
-</div>
 
 {% endblock %}
--->

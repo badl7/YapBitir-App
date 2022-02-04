@@ -1,55 +1,84 @@
-<!--
 {% extends "layout.html" %}
 
 
 {% block body %}
 
-  <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4"><center>TO-DO LIST</center></h1>
-    <p class="lead"><center>This is To-Do list for Python Django Web Development</center></p>
-    <div class="text-center">
-      <a class="btn btn-outline-success" href="{% url 'create' %}" role="button">Create New TO-DO</a>
+
+<div class="row">
+    <div class="col-md-10 offset-md-3">
+        <div class="col-lg-8">
+        <h3>Listeler</h3>
+        <hr>
+        </div>
     </div>
+</div>
+
+<div class ="row">
+    <div class="col-md-10 offset-md-3">
+        <div class="col-lg-8">
+            <form>
+                 {% csrf_token %} 
+                <input type="text" name = "keyword" class="input-sm" maxlength="64" placeholder="Ara...">
+              <button type="submit" class="btn btn-danger">Ara</button>
+            </form>
+      </div>
+    </div>
+
+</div>
+{% if yapbitirs %}
+{% for yapbitir in yapbitirs %}
+<div class="row">
+   <div class="col-md-10 offset-md-3">
+    <!-- Post Content Column -->
+    <div class="col-lg-8">
+
+      <!-- Title -->
+    <a href="{% url 'yapbitir:detail' yapbitir.id %}" ><h2 class="mt-4">{{yapbitir.title}}</h2></a>
+
+      <!-- Author -->
+      <p class="lead">
+        
+        <a href="{% url 'yapbitir:detail' yapbitir.id %}" >{{yapbitir.author.username}}</a> tarafından yayınlandı.
+      </p>
+
+      <hr>
+
+      <!-- Date/Time -->
+      <p>{{yapbitir.created_date}}</p>
+
+      <hr>
+
+      <p>{{yapbitir.dateline}}</p>
+      <!-- Preview Image
+      {% if article.article_image %}
+      <img class="img-fluid rounded" src="{{article.article_image.url}}" alt="">
+    
+      {% endif %}
+
+      
+      <hr>
+       -->
+      <!-- Post Content  -->
+      <p class="lead">
+          {{yapbitir.content|safe|truncatewords:2}}
+      </p>
+      <a style="float: right;" href="{% url 'yapbitir:detail' yapbitir.id %}" class = "btn btn-danger">Devamını Oku</a>
+      <hr>
+     
+        </div>
+      </div>
   </div>
+
+{% endfor %}
+{% else %}
+<div class="row">
+    <div class="col-md-10 offset-md-3">
+        <div class="col-lg-8">
+<div class= "alert alert-danger">
+    Liste Bulunamadı!
 </div>
-<div class="container">
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">To-Do Name</th>
-      <th scope="col">Is Finished?</th>
-      <th scope="col">Date and Time</th>
-      <th scope="col">Delete</th>
-      <th scope="col">Update</th>
-    </tr>
-  </thead>
-  <tbody>
-      {% for todo in todo_list %} 
-        {% if todo.finished %}
-          <tr>
-              <td><del>{{ todo.title }}</del></td>
-              <td><a class="btn btn-danger" href="{% url 'yes_finish' todo.id %}" role="button">Yes</a></td>
-              <td>{{ todo.date }}</td>
-              <td><a class="btn btn-danger" href="{% url 'delete' todo.id %}" role="button">Delete</a></td>
-              <td><a class="btn btn-warning" href="{% url 'update' todo.id %}" role="button">Update</a></td>
-          </tr>
-        {% else %}
-          <tr>
-              <td>{{ todo.title }}</td>
-              <td><a class="btn btn-warning" href="{% url 'no_finish' todo.id %}" role="button">No</a></td>
-              <td>{{ todo.date }}</td>
-              <td><a class="btn btn-danger" href="{% url 'delete' todo.id %}" role="button">Delete</a></td>
-              <td><a class="btn btn-warning" href="{% url 'update' todo.id %}" role="button">Update</a></td>
-          </tr>
-        {% endif %}
-      {% endfor %}
-  </tbody>
-</table>
-
 </div>
-
-
-
+</div>
+</div>
+{% endif %}
 {% endblock body %}
--->

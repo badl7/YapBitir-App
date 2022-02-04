@@ -3,20 +3,18 @@
 
 {% block body %}
 
-
-<div class ="jumbotron text-center" style= "margin-top:200px;">
-    <h1>YapBitirApp e Hoşgeldiniz...</h1>
-    <p style="color: darkgoldenrod;">Bu uygulama yapılacaklar listelerinizi daha düzenli bir hale getirmenizi ve dolayısıyla işlerinizi daha hızlı bitirmenizi sağlar. Kayıt olarak, kendi listlerinizi oluşturabilirsiniz. Keyifli YapBitir' ler... </p>
-</div>
-
 <p>
-        {% if request.user.is_authenticated %}
-            Giriş yapıldı... Hoş geldiniz, <strong>{{request.user.username}} </strong>
-        {% else %}
-            Giriş Yapılmadı!
-        {% endif %}
+    {% if request.user.is_authenticated %}
+        <h2>Selam, <strong>{{request.user.username}} </strong> hadi YapBitir listeleri bitir.</h2>
+    {% else %}
+           <div class ="jumbotron text-center" style= "margin-top:110px;">
+             <h1>YapBitirApp e Hoşgeldiniz...</h1>
+             <p style="color: darkgoldenrod;">Bu uygulama yapılacaklar listelerinizi daha düzenli bir hale getirmenizi ve dolayısıyla işlerinizi daha hızlı bitirmenizi sağlar. Kayıt olarak, kendi listlerinizi oluşturabilirsiniz. Keyifli YapBitir' ler... </p>
+           </div>  
 
-</p>
+           <h3>Giriş Yapılmadı!</h3>
+    {% endif %}
+
 
 
 <div class ="jumbotron text-center" style= "margin-top:200px;">
