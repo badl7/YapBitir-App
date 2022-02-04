@@ -3,15 +3,16 @@
 
 {% block body %}
 
-
-<div class="row">
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+   <div class="row">
     <div class="col-md-10 offset-md-3">
         <div class="col-lg-8">
         <h3>Listeler</h3>
         <hr>
         </div>
     </div>
-</div>
+   </div>
 
 <div class ="row">
     <div class="col-md-10 offset-md-3">
@@ -33,12 +34,12 @@
     <div class="col-lg-8">
 
       <!-- Title -->
-    <a href="{% url 'yapbitir:detail' yapbitir.id %}" ><h2 class="mt-4">{{yapbitir.title}}</h2></a>
+    <a style="color: crimson;" href="{% url 'yapbitir:detail' yapbitir.id %}" ><h2 class="mt-4">{{yapbitir.title}}</h2></a>
 
       <!-- Author -->
       <p class="lead">
         
-        <a href="{% url 'yapbitir:detail' yapbitir.id %}" >{{yapbitir.author.username}}</a> tarafından yayınlandı.
+        <a style="color: chocolate;" href="{% url 'yapbitir:detail' yapbitir.id %}" >{{yapbitir.author.username}}</a> tarafından yayınlandı.
       </p>
 
       <hr>
@@ -62,7 +63,7 @@
       <p class="lead">
           {{yapbitir.content|safe|truncatewords:2}}
       </p>
-      <a style="float: right;" href="{% url 'yapbitir:detail' yapbitir.id %}" class = "btn btn-danger">Devamını Oku</a>
+      <a style="float: right;" href="{% url 'yapbitir:detail' yapbitir.id %}" class = "btn btn-outline-dark">Devamını Oku</a>
       <hr>
      
         </div>
@@ -76,6 +77,8 @@
         <div class="col-lg-8">
 <div class= "alert alert-danger">
     Liste Bulunamadı!
+</div>
+</div>
 </div>
 </div>
 </div>
