@@ -1,6 +1,8 @@
 from django.db import models
 
 from datetime import datetime
+
+import yapbitir
 # Create your models here.
 
 class Yapbitir(models.Model):
@@ -17,7 +19,7 @@ class Yapbitir(models.Model):
         ordering = ['-created_date']
 
 class Comment(models.Model):
-    article = models.ForeignKey(Yapbitir,on_delete= models.CASCADE,verbose_name="Makale",related_name="comments")
+    yapbitir = models.ForeignKey(Yapbitir,on_delete= models.CASCADE,verbose_name="Yapbitir",related_name="comments")
     comment_author = models.CharField(max_length= 50 ,verbose_name="İsim")
     comment_content = models.CharField(max_length= 200, verbose_name="Yorum")
     comment_date = models.DateTimeField(auto_now_add=True)
