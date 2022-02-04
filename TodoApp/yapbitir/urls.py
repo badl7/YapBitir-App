@@ -14,7 +14,6 @@ urlpatterns = [
     path('update/<int:id>', views.updateYapbitir,name= "update"),
     path('delete/<int:id>', views.deleteYapbitir ,name= "delete"),
     path('', views.yapbitirs ,name= "yapbitirs"),
-    path('comment/<int:id>', views.addComment ,name= "comment"),
     path('yes_finish/<int:id>', views.yes_finish,name="yes_finish"),
     path('no_finish/<int:id>', views.no_finish,name="no_finish"),
 ]

@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404, redirect, render,HttpResponse,re
 import yapbitir
 from .forms import YapbitirForm
 from django.contrib import messages
-from .models import Yapbitir,Comment
+from .models import Yapbitir
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 def index(request):
@@ -56,8 +56,8 @@ def detail(request,id):
     #article = Yapbitir.objects.filter(id = id).first()
     yapbitir = get_object_or_404(Yapbitir,id = id)
 
-    comments = yapbitir.comments.all()
-    return render(request,"detail.html",{"yapbitir" : yapbitir , "comments" : comments})
+    
+    return render(request,"detail.html",{"yapbitir" : yapbitir})
 
 @login_required(login_url="user:login")
 def updateYapbitir(request,id):
@@ -82,19 +82,6 @@ def deleteYapbitir(request,id):
 
     messages.success(request,"Liste Başarıyla Silindi...")
     return redirect("yapbitir:dashboard")
-
-def addComment(request,id):
-    yapbitir = get_object_or_404(Yapbitir,id=id)
-
-    if request.method == "POST":
-        comment_author = request.POST.get("comment_author")
-        comment_content = request.POST.get("comment_content")
-
-        newComment = Comment(comment_author = comment_author , comment_content = comment_content)
-        newComment.yapbitir = yapbitir
-
-        newComment.save()
-    return redirect(reverse("yapbitir:detail", kwargs={"id":id} ))
 
 
 def yes_finish(request,id):
