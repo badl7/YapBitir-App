@@ -27,7 +27,7 @@
       {% for yapbitir in yapbitirs %} 
         {% if yapbitir.finished %}
           <tr>
-              <td><del>{{ yapbitir.title }}</del></td>
+              <td><del><a style="color: darkred;" href="{% url 'yapbitir:detail' yapbitir.id %}">{{ yapbitir.title }}</a></del></td>
               <td><a class="btn btn-danger" href="{% url 'yapbitir:yes_finish' yapbitir.id %}" role="button">Evet</a></td>
               <td>{{ yapbitir.created_date }}</td>
               <td>{{ yapbitir.dateline }}</td>
@@ -36,7 +36,7 @@
           </tr>
         {% else %}
           <tr>
-              <td>{{ yapbitir.title }}</td>
+              <td><a style="color: black;" href="{% url 'yapbitir:detail' yapbitir.id %}"><h4>{{ yapbitir.title }}</h4></a></td>
               <td><a class="btn btn-warning" href="{% url 'yapbitir:no_finish' yapbitir.id %}" role="button">Hayır</a></td>
               <td>{{ yapbitir.created_date }}</td>
               <td>{{ yapbitir.dateline }}</td>

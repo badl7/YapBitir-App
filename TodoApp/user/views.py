@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import login,authenticate,logout
 
+
 # Create your views here.
 def register(request):
     form = RegisterForm(request.POST or None)
@@ -66,6 +67,7 @@ def loginUser(request):  # sourcery skip: extract-method
         if user is None:
             messages.info(request,"Kullanıcı Adı veya Parola yanlış!")
             return render(request,"login.html", context)
+        
         messages.success(request,"Başarıyla Giriş Yaptınız...")
         login(request,user)
         return redirect("index")

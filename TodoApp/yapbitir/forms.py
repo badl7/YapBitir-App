@@ -5,3 +5,4 @@ class YapbitirForm(forms.ModelForm):
     class Meta:
         model = Yapbitir
         fields = ["title" , "content" , "dateline"]
+        

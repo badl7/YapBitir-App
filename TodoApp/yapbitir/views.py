@@ -1,3 +1,4 @@
+from django.forms import CheckboxInput
 from django.shortcuts import get_object_or_404, redirect, render,HttpResponse,redirect,get_object_or_404,reverse
 
 import yapbitir
@@ -40,9 +41,12 @@ def dashboard(request):
 @login_required(login_url="user:login")
 def addyapbitir(request):
     form = YapbitirForm(request.POST or None, request.FILES or None)
+    content = CheckboxInput
     
     if form.is_valid():
+        
         yapbitir = form.save(commit=False)
+        
         yapbitir.author = request.user
         yapbitir.save()
 

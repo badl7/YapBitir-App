@@ -27,14 +27,14 @@
 
         </ul>
       <ul class="navbar-nav ml-auto">
-        <form class="d-flex">
-          <input class="form-control me-2" type="search"  name = "ara" class="input-sm" maxlength="64" placeholder="Ara..." aria-label="Search">
-          <button class="btn btn-outline-dark" type="submit">Ara</button>
-          
-        </form>
+        
+
 
 
         {% if request.user.is_authenticated %}
+        <li class="nav-item active">
+        
+        </li>
         <li class="nav-item active">
             <a class="nav-link" href="{% url 'yapbitir:dashboard' %}">YapBitir</a>
         </li> 
