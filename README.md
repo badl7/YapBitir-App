@@ -1,3 +1,3 @@
 # YapBitir App
 
-django with todo-app
+todo-app with django 
